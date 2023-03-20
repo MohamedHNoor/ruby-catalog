@@ -34,3 +34,4 @@ class Item
 
   private :can_be_archived?
 end
+
