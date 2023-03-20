@@ -118,7 +118,7 @@ Install this project with:
 
 ### Usage
 
-- The project can be used as a tool to record what books are in the library and who borrows them.
+- Run the app with `ruby main.rb` in the terminal from the root folder of the project.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
