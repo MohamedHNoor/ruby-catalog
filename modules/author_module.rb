@@ -2,7 +2,7 @@ require_relative '../classes/author'
 require 'json'
 require 'date'
 
-class AuthorModule
+module AuthorModule
   def load_author
     file = File.read('./json_db/authors.json')
     data = []
