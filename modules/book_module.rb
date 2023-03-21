@@ -6,7 +6,7 @@ module BooksData
   def load_books
     file = './json_db/books.json'
     data = []
-    if File.exist?(file) && File.read(file) != ''
+    if File.exist?(file) && !File.empty?(file)
       JSON.parse(File.read(file)).each do |element|
         data.push(Book.new(element['name'], element['publisher'], element['cover_state'], element['publish_date']))
       end
