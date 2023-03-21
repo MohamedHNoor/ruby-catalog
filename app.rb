@@ -1,5 +1,11 @@
+require './classes/game'
+require './modules/game_module'
+
 class App
+  include GameModule
+
   def initialize
+    @games = load_game
     @options = [
       'List all books',
       'List all music albums',
@@ -63,7 +69,18 @@ class App
   end
 
   def list_all_games
-    # TODO
+    if @games.empty?
+      puts 'There are no games in the List'
+      nil
+    else
+      @games.each do |game|
+        puts "Publish date: #{game.publish_date}"
+        puts "Archived: #{game.archived}"
+        puts "Multiplayer: #{game.multiplayer}"
+        puts "Last played: #{game.last_played}"
+        puts '----------------------'
+      end
+    end
   end
 
   def list_all_genres
@@ -87,7 +104,18 @@ class App
   end
 
   def add_game
-    # TODO
+    puts 'Enter the date of publication: '
+    publish_date = gets.chomp
+    puts 'Enter if the game is archived: true or false '
+    archived = gets.chomp
+    puts 'Enter if the game is multiplayer: true or false '
+    multiplayer = gets.chomp
+    puts 'Enter the last time the game was played: '
+    last_played = gets.chomp
+
+    @games << Game.new(publish_date, archived, multiplayer, last_played)
+    save_game
+    puts 'Game added successfully'
   end
 
   def exit_app
