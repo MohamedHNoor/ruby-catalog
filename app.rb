@@ -92,10 +92,8 @@ class App
     else
       @games.each do |game|
         puts "Publish date: #{game.publish_date}"
-        puts "Archived: #{game.archived}"
         puts "Multiplayer: #{game.multiplayer}"
-        puts "Last played: #{game.last_played}"
-        puts '----------------------'
+        puts "Last played_at: #{game.last_played_at}"
       end
     end
   end
@@ -136,18 +134,19 @@ class App
   end
 
   def add_game
-    puts 'Enter the date of publication: '
+    puts 'Please enter the publish date of the game: YYYY-MM-DD'
     publish_date = gets.chomp
-    puts 'Enter if the game is archived: true or false '
-    archived = gets.chomp
-    puts 'Enter if the game is multiplayer: true or false '
+    puts 'Please enter the multiplayer option of the game: true/false'
     multiplayer = gets.chomp
-    puts 'Enter the last time the game was played: '
+    if multiplayer != 'true' && multiplayer != 'false'
+      puts 'Invalid multiplayer option'
+      return
+    end
+    puts 'Please enter the last played date of the game: YYYY-MM-DD'
     last_played = gets.chomp
-
-    @games << Game.new(publish_date, archived, multiplayer, last_played)
+    @games << Game.new(publish_date, multiplayer, last_played)
     save_game
-    puts 'Game added successfully'
+    puts 'Successfully added game!'
   end
 
   def exit_app

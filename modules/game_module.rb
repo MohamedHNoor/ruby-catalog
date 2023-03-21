@@ -8,7 +8,7 @@ module GameModule
     data = []
     if File.exist?(file) && !File.empty?(file)
       JSON.parse(File.read(file)).each do |element|
-        data << Game.new(element['publish_date'], element['archived'], element['multiplayer'], element['last_played'])
+        data << Game.new(element['publish_date'], element['multiplayer'], element['last_played'])
       end
     end
     data
@@ -19,8 +19,8 @@ module GameModule
     directory = './json_db/games.json'
     File.new(directory, 'w') unless File.exist?(directory)
     @games.each do |game|
-      data.push({ 'publish_date' => game.publish_date, 'archived' => game.archived, 'multiplayer' => game.multiplayer,
-                  'last_played' => game.last_played })
+      data.push({ 'publish_date' => game.publish_date, 'multiplayer' => game.multiplayer,
+                  'last_played_at' => game.last_played_at })
     end
     File.open(directory, 'w') do |file|
       file.puts(JSON.pretty_generate(data))
