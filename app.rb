@@ -6,7 +6,7 @@ require './modules/game_module'
 class App
   include BooksData
   include GameModule
-  
+
   def initialize
     @books = load_books
     @games = load_game
