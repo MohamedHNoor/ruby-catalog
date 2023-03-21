@@ -8,7 +8,7 @@ module GameModule
     data = []
     if File.exist?(file) && !File.empty?(file)
       JSON.parse(File.read(file)).each do |element|
-        data << Game.new(element['publish_date'], element['multiplayer'], element['last_played'])
+        data << Game.new(element['publish_date'], element['multiplayer'], element['last_played_at'])
       end
     end
     data

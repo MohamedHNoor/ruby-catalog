@@ -93,7 +93,7 @@ class App
       @games.each do |game|
         puts "Publish date: #{game.publish_date}"
         puts "Multiplayer: #{game.multiplayer}"
-        puts "Last played_at: #{game.last_played_at}"
+        puts "Last played at: #{game.last_played_at}"
       end
     end
   end
@@ -143,8 +143,8 @@ class App
       return
     end
     puts 'Please enter the last played date of the game: YYYY-MM-DD'
-    last_played = gets.chomp
-    @games << Game.new(publish_date, multiplayer, last_played)
+    last_played_at = gets.chomp
+    @games << Game.new(publish_date, multiplayer, last_played_at)
     save_game
     puts 'Successfully added game!'
   end
