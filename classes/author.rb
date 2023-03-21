@@ -1,6 +1,6 @@
 require_relative './game'
 
-class Author 
+class Author
   attr_accessor :first_name, :last_name, :id, :items
 
   def initialize(first_name, last_name, id = nil)
@@ -14,5 +14,4 @@ class Author
     @items.push(item) unless @items.include?(item)
     item.author = self
   end
-
 end
