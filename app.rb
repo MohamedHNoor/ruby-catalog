@@ -1,10 +1,16 @@
 require './classes/book'
 require './modules/book_module'
+require './classes/game'
+require './modules/game_module'
 
 class App
   include BooksData
+  include GameModule
+
   def initialize
     @books = load_books
+    @games = load_game
+
     @options = [
       'List all books',
       'List all music albums',
@@ -80,7 +86,16 @@ class App
   end
 
   def list_all_games
-    # TODO
+    if @games.empty?
+      puts 'There are no games in the List'
+      nil
+    else
+      @games.each do |game|
+        puts "Publish date: #{game.publish_date}"
+        puts "Multiplayer: #{game.multiplayer}"
+        puts "Last played at: #{game.last_played_at}"
+      end
+    end
   end
 
   def list_all_genres
@@ -119,7 +134,19 @@ class App
   end
 
   def add_game
-    # TODO
+    puts 'Please enter the publish date of the game: YYYY-MM-DD'
+    publish_date = gets.chomp
+    puts 'Please enter the multiplayer option of the game: true/false'
+    multiplayer = gets.chomp
+    if multiplayer != 'true' && multiplayer != 'false'
+      puts 'Invalid multiplayer option'
+      return
+    end
+    puts 'Please enter the last played date of the game: YYYY-MM-DD'
+    last_played_at = gets.chomp
+    @games << Game.new(publish_date, multiplayer, last_played_at)
+    save_game
+    puts 'Successfully added game!'
   end
 
   def exit_app
