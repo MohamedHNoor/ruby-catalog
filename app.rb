@@ -1,11 +1,16 @@
+require './classes/book'
+require './modules/book_module'
 require './classes/game'
 require './modules/game_module'
 
 class App
+  include BooksData
   include GameModule
-
+  
   def initialize
+    @books = load_books
     @games = load_game
+
     @options = [
       'List all books',
       'List all music albums',
@@ -23,13 +28,15 @@ class App
   def run
     puts '----------------------'
     puts 'Welcome to the app!'
-    puts '----------------------'
-    puts 'Please choose an option: [1-10]'
 
-    @options.each_with_index do |option, index|
-      puts "#{index + 1}. #{option}"
+    loop do
+      puts '----------------------'
+      puts 'Please choose an option: [1-10]'
+      @options.each_with_index do |option, index|
+        puts "#{index + 1}. #{option}"
+      end
+      user_input
     end
-    user_input
   end
 
   def user_input
@@ -61,7 +68,17 @@ class App
   end
 
   def list_all_books
-    # TODO
+    if @books.empty?
+      puts 'There are no books in the library'
+      return
+    end
+    @books.each_with_index do |book, index|
+      puts "#{index + 1}-Name: #{book.name}
+      \rPublisher: #{book.publisher}
+      \rCover state: #{book.cover_state}
+      \rPublish date: #{book.publish_date}
+      \n"
+    end
   end
 
   def list_all_music_albums
@@ -96,7 +113,22 @@ class App
   end
 
   def add_book
-    # TODO
+    puts 'Please enter the name of the book:'
+    name = gets.chomp
+    puts 'Please enter the publisher of the book:'
+    publisher = gets.chomp
+    puts 'Please enter the cover state of the book: good/bad'
+    cover_state = gets.chomp
+    if cover_state != 'good' && cover_state != 'bad'
+      puts 'Invalid cover state'
+      return
+    end
+    puts 'Please enter the publish date of the book: YYYY-MM-DD'
+    date = gets.chomp
+    puts date
+    @books << Book.new(name, publisher, cover_state, date)
+    save_books
+    puts 'Successfully added book!'
   end
 
   def add_music_album

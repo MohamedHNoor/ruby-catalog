@@ -14,6 +14,7 @@ class Item
 
   def add_author(author)
     @author = author
+    author.add_item(self) unless author.items.include?(self)
   end
 
   def add_source(source)
@@ -26,7 +27,7 @@ class Item
   end
 
   def can_be_archived?
-    (Date.today.year - @publish_date.year) > 10
+    (Date.today.year - @publish_date.to_i) > 10
   end
 
   def move_to_archive
