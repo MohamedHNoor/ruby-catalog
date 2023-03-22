@@ -55,43 +55,42 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 💻 Getting Started <a name="getting-started"></a>
-
-To get a local copy up and running, follow these steps.
+## 💻 Getting Started with ruby-catalog <a name="getting-started"></a>
+> To get a local copy up and running, follow these steps.
 
 ### Prerequisites
-
 In order to run this project you need:
-
-- Mac or PC
-- Install Ruby
-- Understanding OOP principles
+1. Ruby installed on your machine
+2. Text editor (VSCode, Sublime, Atom, etc.)
 
 ### Setup
 
-Clone this repository to your desired folder:
+Clone this [repository](https://github.com/rbhatt1999/ruby-catalog.git) to your desired folder:
 
 ```sh
-  cd your-folder
-  https://github.com/rbhatt1999/ruby-catalog.git
+  cd ruby-catalog
+  git clone https://github.com/rbhatt1999/ruby-catalog.git 
 ```
 
 ### Install
-
 Install this project with:
-
-- GitHub Actions
-- Linters
-  - Rubocop
-- Ruby
+```sh
+  cd school-library
+```
 
 ### Usage
-
-- Run the app with `ruby main.rb` in the terminal from the root folder of the project.
+Run this project with:
+```sh
+  ruby main.rb
+```
+### Run tests
+Run tests with:
+```sh
+  rspec
+  rubocop
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- AUTHORS -->
 
 ## 👥 Authors <a name="authors"></a>
 
