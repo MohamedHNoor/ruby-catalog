@@ -22,12 +22,11 @@ module GenreData
     File.write('./json_db/genre.json', JSON.pretty_generate(data))
   end
 
-  def create_genre(items)
+  def create_genre(item)
     puts "Enter genre name:"
     name = gets.chomp
     genre = Genre.new(@genres.length + 1, name)
-    genre.add_item(items)
+    genre.add_item(item)
     @genres << genre
-    save_genre
   end
 end

@@ -19,7 +19,7 @@ module MusicAlbumData
     data = []
     File.new(directory, 'w') unless File.exist?(directory)
     @albums.each do |album|
-      data.push({publish_date: album.publish_date, on_spotify: album.on_spotify })
+      data.push({ publish_date: album.publish_date, on_spotify: album.on_spotify })
     end
     File.open(directory, 'w') do |file|
       file.puts(JSON.pretty_generate(data))

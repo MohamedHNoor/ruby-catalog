@@ -4,13 +4,13 @@ class Genre
   attr_accessor :id, :name, :items
 
   def initialize(id, name)
-    @id = id || rand(1..1000)
+    @id = Random.rand(1..1000)
     @name = name
     @items = []
   end
 
   def add_item(item)
-    @items.push(item) 
-    item.add_genre(self)
+    @items.push(item)  unless @items.include?(item)
+    item.genre = self
   end
 end
