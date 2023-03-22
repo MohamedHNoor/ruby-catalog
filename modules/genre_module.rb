@@ -17,13 +17,13 @@ module GenreData
   def save_genre
     data = []
     @genres.each do |genre|
-      data.push({ id: genre.id, name: genre.name})
+      data.push({ id: genre.id, name: genre.name })
     end
     File.write('./json_db/genre.json', JSON.pretty_generate(data))
   end
 
   def create_genre(item)
-    puts "Enter genre name:"
+    puts 'Enter genre name:'
     name = gets.chomp
     genre = Genre.new(@genres.length + 1, name)
     genre.add_item(item)
