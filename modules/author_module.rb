@@ -3,6 +3,17 @@ require 'json'
 require 'date'
 
 module AuthorModule
+  def create_author(items)
+    puts 'Enter author first name:'
+    first_name = gets.chomp
+    puts 'Enter author last name:'
+    last_name = gets.chomp
+    author = Author.new(first_name, last_name, @authors.length + 1)
+    author.add_item(items)
+    @authors << author
+    save_author
+  end
+
   def load_author
     file = './json_db/authors.json'
     data = []

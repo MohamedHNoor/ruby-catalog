@@ -155,15 +155,9 @@ class App
     end
     puts 'Please enter the last played date of the game: YYYY-MM-DD'
     last_played_at = gets.chomp
-
-    puts 'Please enter the first name of the author:'
-    first_name = gets.chomp
-    puts 'Please enter the last name of the author:'
-    last_name = gets.chomp
-    @authors << Author.new(first_name, last_name)
-    save_author
-
-    @games << Game.new(publish_date, multiplayer, last_played_at)
+    game = Game.new(publish_date, multiplayer, last_played_at)
+    @games << game
+    create_author(game)
     save_game
     puts 'Successfully added game!'
   end

@@ -10,7 +10,6 @@ module GameModule
       JSON.parse(File.read(file)).each do |element|
         data << Game.new(element['publish_date'], element['multiplayer'], element['last_played_at'])
       end
-    end
     data
   end
 
