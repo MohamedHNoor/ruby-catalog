@@ -19,6 +19,16 @@ module LabelsData
     @labels.each do |label|
       data.push({ id: label.id, title: label.title, color: label.color })
     end
-    File.write('./json_db/labels.json', JSON.generate(data))
+    File.write('./json_db/labels.json', JSON.pretty_generate(data))
+  end
+
+  def create_label(string, item)
+    puts "Enter #{string}'s label title:"
+    title = gets.chomp
+    puts "Enter #{string}'s label color:"
+    color = gets.chomp
+    label = Label.new(@labels.length + 1, title, color)
+    label.add_item(item)
+    @labels << label
   end
 end
