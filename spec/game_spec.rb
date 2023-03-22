@@ -2,7 +2,7 @@ require_relative '../classes/game'
 require_relative '../classes/item'
 
 describe Game do
-  let(:game) { Game.new(Time.new(1990, 0o1, 0o1), true, Time.new(2019, 0o1, 0o1)) }
+  let(:game) { Game.new('2012-12-12', true, '2019-01-01') }
 
   describe '#initialize' do
     it 'should initialize a game' do
@@ -10,7 +10,7 @@ describe Game do
     end
 
     it 'game publish date should be 1990-01-01' do
-      expect(game.publish_date).to eq(Time.new(1990, 0o1, 0o1))
+      expect(game.publish_date).to eq('2012-12-12')
     end
 
     it 'game multiplayer should be true' do
@@ -18,7 +18,7 @@ describe Game do
     end
 
     it 'game last played at should be 2019-01-01' do
-      expect(game.last_played_at).to eq(Time.new(2019, 0o1, 0o1))
+      expect(game.last_played_at).to eq('2019-01-01')
     end
   end
 
