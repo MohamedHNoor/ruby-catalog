@@ -1,6 +1,10 @@
 [
-    {
-      "id": 1,
-      "name": "Harshita"
-    }
-  ]
+  {
+    "id": 1,
+    "name": "Harshita"
+  },
+  {
+    "id": 2,
+    "name": "pop"
+  }
+]
