@@ -1,3 +1,5 @@
+CREATE DATABASE library;
+
 CREATE TABLE item (
   id INT SERIAL PRIMARY KEY,
   genre INT REFERENCES genre(id),
