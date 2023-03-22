@@ -1,5 +1,6 @@
 class Label
-  attr_accessor :title, :items, :id, :color
+  attr_accessor :title, :color
+  attr_reader :id, :items
 
   def initialize(id, title, color)
     @id = id
