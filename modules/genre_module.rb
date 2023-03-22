@@ -28,5 +28,6 @@ module GenreData
     genre = Genre.new(@genres.length + 1, name)
     genre.add_item(item)
     @genres << genre
+    save_genre
   end
 end

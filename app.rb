@@ -167,8 +167,8 @@ class App
     book = Book.new(name, publisher, cover_state, date)
     @books << book
     create_label('book', book)
+    create_author(book)
     save_books
-    save_labels
     puts 'Successfully added book!'
   end
 
@@ -184,8 +184,9 @@ class App
     album = MusicAlbum.new(publish_date, on_spotify)
     @albums << album
     create_genre(album)
+    create_label('music', album)
+    create_author(album)
     save_album
-    save_genre
     puts 'Successfully added album!'
   end
 

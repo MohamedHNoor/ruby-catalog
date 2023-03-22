@@ -30,5 +30,6 @@ module LabelsData
     label = Label.new(@labels.length + 1, title, color)
     label.add_item(item)
     @labels << label
+    save_labels
   end
 end

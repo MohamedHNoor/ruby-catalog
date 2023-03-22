@@ -22,9 +22,5 @@ describe Label do
     it ' detect the Label name' do
       expect(@label_item.title).to eq 'TEST LABEL NAME'
     end
-    it 'detect the Label items' do
-      @label_item.items = [1, 2, 3]
-      expect(@label_item.items).to eq [1, 2, 3]
-    end
   end
 end
