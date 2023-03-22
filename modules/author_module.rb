@@ -19,7 +19,7 @@ module AuthorModule
     data = []
     if File.exist?(file) && !File.empty?(file)
       JSON.parse(File.read(file)).each do |author|
-        data << Author.new(author['id'], author['first_name'], author['last_name'])
+        data << Author.new(author['first_name'], author['last_name'], author['id'])
       end
     end
     data
