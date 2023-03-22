@@ -2,16 +2,19 @@ require './classes/book'
 require './modules/book_module'
 require './classes/game'
 require './modules/game_module'
+require './modules/author_module'
 require './modules/label_module'
 
 class App
   include BooksData
   include GameModule
+  include AuthorModule
   include LabelsData
 
   def initialize
     @books = load_books
     @games = load_game
+    @authors = load_author
     @labels = load_labels
 
     @options = [
@@ -114,7 +117,15 @@ class App
   end
 
   def list_all_authors
-    # TODO
+    if @authors.empty?
+      puts 'There are no authors in the library'
+      return
+    end
+    @authors.each do |author|
+      puts "ID: #{author.id}"
+      puts "First name: #{author.first_name}"
+      puts "Last name: #{author.last_name}"
+    end
   end
 
   def add_book
@@ -154,7 +165,9 @@ class App
     end
     puts 'Please enter the last played date of the game: YYYY-MM-DD'
     last_played_at = gets.chomp
-    @games << Game.new(publish_date, multiplayer, last_played_at)
+    game = Game.new(publish_date, multiplayer, last_played_at)
+    @games << game
+    create_author(game)
     save_game
     puts 'Successfully added game!'
   end
