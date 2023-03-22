@@ -22,3 +22,18 @@ CREATE TABLE author (
   first_name VARCHAR(50), 
   last_name VARCHAR(50)
 );
+
+CREATE TABLE labels (
+    id  INT GENERATED ALWAYS AS IDENTITY,
+    title VARCHAR(100),
+    color VARCHAR(100),
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE books (
+    id  INT,
+    title VARCHAR(100),
+    publisher VARCHAR(100),
+    cover_state VARCHAR(100),
+    FOREIGN KEY(id) REFERENCES item(id)
+);
