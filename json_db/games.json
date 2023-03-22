@@ -28,5 +28,15 @@
     "publish_date": "2010-11-09",
     "multiplayer": "false",
     "last_played_at": "2023-11-11"
+  },
+  {
+    "publish_date": "2020-01-01",
+    "multiplayer": "true",
+    "last_played_at": "2023-01-01"
+  },
+  {
+    "publish_date": "2010",
+    "multiplayer": "false",
+    "last_played_at": "2023-01-01"
   }
 ]
