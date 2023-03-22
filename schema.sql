@@ -37,3 +37,14 @@ CREATE TABLE books (
     cover_state VARCHAR(100),
     FOREIGN KEY(id) REFERENCES item(id)
 );
+
+CREATE TABLE musicalbum (
+  id INT PRIMARY KEY REFERENCES item(id),
+  publish_date DATE, 
+  on_spotify BOOLEAN
+);
+
+CREATE TABLE genre (
+  id INT PRIMARY KEY, 
+  f_name VARCHAR(50)
+);

@@ -2,18 +2,25 @@ require './classes/book'
 require './modules/book_module'
 require './classes/game'
 require './modules/game_module'
+require './classes/musicalbum'
+require './modules/musicalbum_module'
+require './modules/genre_module'
 require './modules/author_module'
 require './modules/label_module'
 
 class App
   include BooksData
   include GameModule
+  include MusicAlbumData
+  include GenreData
   include AuthorModule
   include LabelsData
 
   def initialize
     @books = load_books
     @games = load_game
+    @albums = load_album
+    @genres = load_genre
     @authors = load_author
     @labels = load_labels
 
@@ -88,7 +95,15 @@ class App
   end
 
   def list_all_music_albums
-    # TODO
+    if @albums.empty?
+      puts 'There are no albums in the List'
+      nil
+    else
+      @albums.each do |album|
+        puts "Publish date: #{album.publish_date}"
+        puts "On Spotify: #{album.on_spotify}"
+      end
+    end
   end
 
   def list_all_games
@@ -105,7 +120,14 @@ class App
   end
 
   def list_all_genres
-    # TODO
+    if @genres.empty?
+      puts 'There are no genres in the library'
+      return
+    end
+    @genres.each do |genre|
+      puts "ID: #{genre.id}"
+      puts "name: #{genre.name}"
+    end
   end
 
   def list_all_labels
@@ -151,7 +173,20 @@ class App
   end
 
   def add_music_album
-    # TODO
+    puts 'Please enter the publish date of the album: YYYY-MM-DD'
+    publish_date = gets.chomp
+    puts 'Please enter the on spotify option of the album: true/false'
+    on_spotify = gets.chomp
+    if on_spotify != 'true' && on_spotify != 'false'
+      puts 'Invalid on_spotify option'
+      return
+    end
+    album = MusicAlbum.new(publish_date, on_spotify)
+    @albums << album
+    create_genre(album)
+    save_album
+    save_genre
+    puts 'Successfully added album!'
   end
 
   def add_game
