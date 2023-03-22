@@ -10,6 +10,6 @@ class Label
 
   def add_item(item)
     @items.push(item)
-    item.lable = self
+    item.add_label(self)
   end
 end

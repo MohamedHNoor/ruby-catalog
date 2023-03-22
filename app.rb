@@ -5,18 +5,24 @@ require './modules/game_module'
 require './classes/musicalbum'
 require './modules/musicalbum_module'
 require './modules/genre_module'
+require './modules/author_module'
+require './modules/label_module'
 
 class App
   include BooksData
   include GameModule
   include MusicAlbumData
   include GenreData
+  include AuthorModule
+  include LabelsData
 
   def initialize
     @books = load_books
     @games = load_game
     @albums = load_album
     @genres = load_genre
+    @authors = load_author
+    @labels = load_labels
 
     @options = [
       'List all books',
@@ -125,11 +131,23 @@ class App
   end
 
   def list_all_labels
-    # TODO
+    @labels.each do |label|
+      puts "ID: #{label.id}"
+      puts "Title: #{label.title}"
+      puts "Color: #{label.color}"
+    end
   end
 
   def list_all_authors
-    # TODO
+    if @authors.empty?
+      puts 'There are no authors in the library'
+      return
+    end
+    @authors.each do |author|
+      puts "ID: #{author.id}"
+      puts "First name: #{author.first_name}"
+      puts "Last name: #{author.last_name}"
+    end
   end
 
   def add_book
@@ -146,8 +164,11 @@ class App
     puts 'Please enter the publish date of the book: YYYY-MM-DD'
     date = gets.chomp
     puts date
-    @books << Book.new(name, publisher, cover_state, date)
+    book = Book.new(name, publisher, cover_state, date)
+    @books << book
+    create_label('book', book)
     save_books
+    save_labels
     puts 'Successfully added book!'
   end
 
@@ -179,7 +200,9 @@ class App
     end
     puts 'Please enter the last played date of the game: YYYY-MM-DD'
     last_played_at = gets.chomp
-    @games << Game.new(publish_date, multiplayer, last_played_at)
+    game = Game.new(publish_date, multiplayer, last_played_at)
+    @games << game
+    create_author(game)
     save_game
     puts 'Successfully added game!'
   end

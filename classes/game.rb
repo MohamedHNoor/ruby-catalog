@@ -10,7 +10,7 @@ class Game < Item
   end
 
   def can_be_archived?
-    super && (Date.today.year - @last_played_at.year) > 2
+    super && (Date.today.year - @last_played_at.to_i) > 2
   end
 
   private :can_be_archived?
