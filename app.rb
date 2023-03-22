@@ -16,6 +16,7 @@ class App
     @books = load_books
     @games = load_game
     @albums = load_album
+    @genres = load_genre
 
     @options = [
       'List all books',
@@ -163,6 +164,7 @@ class App
     @albums << album
     create_genre(album)
     save_album
+    save_genre
     puts 'Successfully added album!'
   end
 
