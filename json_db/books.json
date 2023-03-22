@@ -1,0 +1,32 @@
+[
+  {
+    "name": "asd",
+    "publisher": "asd",
+    "cover_state": "bad",
+    "publish_date": "2012-12-12"
+  },
+  {
+    "name": "qwe",
+    "publisher": "qwe",
+    "cover_state": "bad",
+    "publish_date": "2023"
+  },
+  {
+    "name": "asd",
+    "publisher": "asd",
+    "cover_state": "bad",
+    "publish_date": "2023"
+  },
+  {
+    "name": "asd",
+    "publisher": "asd",
+    "cover_state": "bad",
+    "publish_date": "2023"
+  },
+  {
+    "name": "rrr",
+    "publisher": "raja",
+    "cover_state": "bad",
+    "publish_date": "2023"
+  }
+]
