@@ -3,16 +3,19 @@ require './modules/book_module'
 require './classes/game'
 require './modules/game_module'
 require './modules/author_module'
+require './modules/label_module'
 
 class App
   include BooksData
   include GameModule
   include AuthorModule
+  include LabelsData
 
   def initialize
     @books = load_books
     @games = load_game
     @authors = load_author
+    @labels = load_labels
 
     @options = [
       'List all books',
@@ -106,7 +109,11 @@ class App
   end
 
   def list_all_labels
-    # TODO
+    @labels.each do |label|
+      puts "ID: #{label.id}"
+      puts "Title: #{label.title}"
+      puts "Color: #{label.color}"
+    end
   end
 
   def list_all_authors
@@ -135,8 +142,11 @@ class App
     puts 'Please enter the publish date of the book: YYYY-MM-DD'
     date = gets.chomp
     puts date
-    @books << Book.new(name, publisher, cover_state, date)
+    book = Book.new(name, publisher, cover_state, date)
+    @books << book
+    create_label('book', book)
     save_books
+    save_labels
     puts 'Successfully added book!'
   end
 
